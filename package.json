@@ -1,0 +1,77 @@
+{
+    "name": "opacc-test",
+    "displayName": "Opacc-Test",
+    "description": "Test",
+    "version": "0.0.1",
+    "publisher": "iDiver76",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.sayHello",
+                "title": "Hello World",
+                "category": "Opacc WAS"
+            }
+        ],
+        "languages": [{
+            "id": "opaccwas",
+            "extensions": [ ".cnf", ".oc", ".rd", ".lc", ".part" ],
+            "aliases": [ "OpaccWAS", "WAS" ],
+            "configuration": "./language-configuration.json"
+        }],
+        "configurationDefaults": {
+			"[opaccwas]": {
+				"files.encoding": "windows1252",
+				"files.autoGuessEncoding": false,
+				"editor.folding": true,
+				"editor.showFoldingControls": "always",
+				"editor.autoIndent": true,
+				"editor.codeLens": true,
+				"editor.lineNumbers": "on",
+				"editor.tabSize": 2,
+				"editor.insertSpaces": false,
+				"editor.renderLineHighlight": "gutter",
+				"editor.dragAndDrop": true,
+				"editor.matchBrackets": true,
+				"editor.colorDecorators": true,
+                "editor.autoClosingBrackets": true,
+				"editor.quickSuggestions": {
+					"other": true,
+					"comments": false,
+					"strings": false
+				},
+				"editor.quickSuggestionsDelay": 600,
+				"editor.wordBasedSuggestions": true,
+				"editor.parameterHints": true,
+				"editor.snippetSuggestions": "top",
+				"editor.acceptSuggestionOnEnter": "on",
+                "editor.renderIndentGuides": true
+            },
+            "emmet.includeLanguages": {"opaccwas": "html"},
+            "emmet.triggerExpansionOnTab": true
+		}
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "tslint": "^5.8.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
